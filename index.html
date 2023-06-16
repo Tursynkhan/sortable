@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Superhero Data</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Superhero Data</h1>
+  
+    <label for="page-size">Page Size:</label>
+    <select id="page-size">
+      <option value="10">10</option>
+      <option value="20" selected>20</option>
+      <option value="50">50</option>
+      <option value="100">100</option>
+      <option value="all">All</option>
+    </select>
+  
+    <br><br>
+  
+    <input type="text" id="search" placeholder="Search by name">
+  
+    <br><br>
+    <table id="superheroes-table">
+      <thead>
+        <tr>
+          <th data-sort-by="image">Image</th>
+          <th data-sort-by="name">Name</th>
+          <th data-sort-by="fullName">Full Name</th>
+          <th data-sort-by="powerstats">PowerStats</th>
+          <th data-sort-by="race">Race</th>
+          <th data-sort-by="gender">Gender</th>
+          <th data-sort-by="height">Height</th>
+          <th data-sort-by="weight">Weight</th>
+          <th data-sort-by="placeOfBirth">Place of Birth</th>
+          <th data-sort-by="alignment">Alignment</th>
+        </tr>
+      </thead>
+      <tbody id="superheroes-data">
+      </tbody>
+    </table>
+  </div>  
+</body>
+<script>
+  const tableBody = document.getElementById('superheroes-data');
+  const pageSizeSelect=document.getElementById("page-size")
+  const loadData = heroes => {
+    superheroesData=heroes
+    console.log(heroes)
+    renderTable()
+  }
+  const renderTable=()=>{
+
+    let row=document.createElement('tr')
+    const displayDataByLength=(len)=>{
+      superheroes.slice(0,len)
+      for (let hero of superheroes){
+        let row = document.createElement('tr');
+          row.innerHTML = `
+            <td><img src=${hero.images.xs}></td>
+            <td>${hero.name}</td>
+            <td>${hero.biography.fullName}</td>
+            <td>${renderPowerstats(hero.powerstats)}</td>
+            <td>${hero.appearance.race}</td>
+            <td>${hero.appearance.gender}</td>
+            <td>${hero.appearance.height[0]}</td>
+            <td>${hero.appearance.weight[0]}</td>
+            <td>${hero.biography.placeOfBirth}</td>
+            <td>${hero.biography.alignment}</td>
+          `;
+          tableBody.appendChild(row)
+      }
+      const renderPowerstats=(obj)=>{
+        let result=Object.entries(obj).map(([value,key])=> `${value}: ${key}`).join(", ")
+        return result
+      } 
+    }
+    pageSizeSelect.addEventListener("change",(event)=>{
+      if (event.target.value==="all"){
+        displayDataByLength(superheroesData.length)
+      }
+      console.log(event.target.value)
+        displayDataByLength(parseInt(event.target.value,20))
+      
+    })
+}
+
+fetch('https://akabab.github.io/superhero-api/api/all.json')
+.then((response) => response.json()) // parse the response from JSON
+.then(loadData) // .then will call the `loadData` function with the JSON value.
+
+</script>
+</html>
