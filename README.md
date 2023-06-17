@@ -2,7 +2,7 @@
 
 This project involves building a web page to organize data about superheroes. The goal is to create a platform to gather information and organize it in a user-friendly manner. The provided data can be found in the "all.json" file.
 
-Chek out : [link](https://tursynkhan.github.io/sortable/)
+Chek out : [link](https://tursynkhan.github.io/sortable/)<br>
 Key features of the web page include:
 
 1. Fetching the Data:
