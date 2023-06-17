@@ -1,3 +1,5 @@
+# Sortable
+
 This project involves building a web page to organize data about superheroes. The goal is to create a platform to gather information and organize it in a user-friendly manner. The provided data can be found in the "all.json" file.
 
 Key features of the web page include:
@@ -29,4 +31,3 @@ Key features of the web page include:
 
 These steps provide an overview of the project requirements. To implement the functionality, you will need to write JavaScript code to fetch and process the data, handle user interactions, and dynamically update the UI. HTML and CSS will be needed to structure and style the web page accordingly.
 
-Feel free to ask if you have any further questions!
