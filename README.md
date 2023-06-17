@@ -1,9 +1,9 @@
 # Sortable
 
 This web application is designed to organize and display data about superheroes. It provides a user-friendly interface to browse through the information, search for specific superheroes, and sort the data based on various columns.
-```
-Chek out the link : [link](https://tursynkhan.github.io/sortable/)
-```
+
+> Chek out the link : [link](https://tursynkhan.github.io/sortable/)
+
 ## Features
 - Fetches superhero data from a remote API using fetch and displays it in a tabular format.
 - Supports pagination to view the data in multiple pages, with the ability to choose the page size from 10, 20, 50, 100, or view all results.
