@@ -11,34 +11,35 @@
 <body>
   <div class="container">
     <h1>Superhero Data</h1>
-  
-    <label for="page-size">Page Size:</label>
-    <select id="page-size">
-      <option value="10">10</option>
-      <option value="20" selected>20</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
-      <option value="all">All</option>
-    </select>
-  
-    <br><br>
-  
-    <input type="text" id="search" placeholder="Search by name">
+    <div class="controls">
+      <label for="page-size">Page Size:</label>
+      <select id="page-size">
+        <option value="10">10</option>
+        <option value="20" selected>20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="all">All</option>
+      </select>
+    
+      <br><br>
+    
+      <input type="text" id="search" placeholder="Search by name">
+    </div>
   
     <br><br>
     <table id="superheroes-table">
       <thead>
         <tr>
-          <th data-sort-by="image">Image</th>
-          <th data-sort-by="name">Name</th>
-          <th data-sort-by="fullName">Full Name</th>
-          <th data-sort-by="powerstats">PowerStats</th>
-          <th data-sort-by="race">Race</th>
-          <th data-sort-by="gender">Gender</th>
-          <th data-sort-by="height">Height</th>
-          <th data-sort-by="weight">Weight</th>
-          <th data-sort-by="placeOfBirth">Place of Birth</th>
-          <th data-sort-by="alignment">Alignment</th>
+          <th >Image</th>
+          <th class="sortable" data-column="name">Name</th>
+          <th >Full Name</th>
+          <th >PowerStats</th>
+          <th >Race</th>
+          <th >Gender</th>
+          <th >Height</th>
+          <th >Weight</th>
+          <th >Place of Birth</th>
+          <th >Alignment</th>
         </tr>
       </thead>
       <tbody id="superheroes-data">
