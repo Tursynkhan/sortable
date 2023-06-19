@@ -1,3 +1,12 @@
+
+img {
+  max-width: 80px;
+  max-height: 80px;
+}
+.controls {
+  margin-bottom: 10px;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -13,7 +22,26 @@ th {
   cursor: pointer;
 }
 
-img {
+.sortable::after {
+  content: "";
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.sortable[data-order="asc"]::after {
+  content: "▲";
+}
+
+.sortable[data-order="desc"]::after {
+  content: "▼";
+}
+
+#superheroes-body img {
   max-width: 50px;
-  max-height: 50px;
+}
+
+#search {
+  margin-left: 10px;
+  padding: 5px;
+  width: 200px;
 }
