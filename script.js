@@ -10,6 +10,14 @@ const loadData = (heroes) => {
   pageSizeSelect.addEventListener('change',()=>PageSizeChange(superheroes))
   searchInput.addEventListener('input', ()=>SearchChange(superheroes))
 
+  const sortableColumns = document.querySelectorAll('.sortable');
+  sortableColumns.forEach((column) => {
+    column.addEventListener('click', () => {
+      const columnName = column.getAttribute('data-column');
+      ColumnSort(superheroes, columnName);
+    });
+  });
+
   PageSizeChange(superheroes);
 }
 
@@ -67,4 +75,46 @@ const filterSuperheroes = (superheroes, searchText) => {
     const name = superhero.name.toLowerCase();
     return name.includes(searchText.toLowerCase());
   });
+};
+
+const ColumnSort = (superheroes, column) => {
+  const th = document.querySelector(`th[data-column="${column}"]`);
+  const order = th.getAttribute('data-order');
+
+  if (order === 'asc') {
+    th.setAttribute('data-order', 'desc');
+  } else {
+    th.setAttribute('data-order', 'asc');
+  }
+
+  const sortedSuperheroes = sortSuperheroes(superheroes, column, order);
+  PageSizeChange(sortedSuperheroes);
+};
+
+const sortSuperheroes = (superheroes, column, order) => {
+  const compareValues = (a, b) => {
+    if (typeof a === 'string' && typeof b === 'string') {
+      a = a.toLowerCase();
+      b = b.toLowerCase();
+    }
+
+    if (a === 'null') return 1;
+    if (b === 'null') return -1;
+    if (a < b) return -1;
+    if (a > b) return 1;
+    return 0;
+  };
+
+  superheroes.sort((a, b) => {
+    const valueA = a[column];
+    const valueB = b[column];
+
+    if (order === 'asc') {
+      return compareValues(valueA, valueB);
+    } else {
+      return compareValues(valueB, valueA);
+    }
+  });
+
+  return superheroes;
 };
